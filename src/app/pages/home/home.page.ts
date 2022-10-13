@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() { 
+    
   }
+
+  ngOnInit() {}
 
 }
