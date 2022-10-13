@@ -13,6 +13,17 @@ export class HomePage implements OnInit {
     
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    BarcodeScanner.prepare();
+  }
+
+  async startScan(){
+    await BarcodeScanner.checkPermission({ force: true });
+    BarcodeScanner.hideBackground();
+    const result = await BarcodeScanner.startScan();
+    if (result.hasContent) {
+      console.log(result.content);
+    }
+  }
 
 }
