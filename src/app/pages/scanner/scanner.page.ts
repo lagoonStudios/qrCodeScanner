@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./scanner.page.scss'],
 })
 export class ScannerPage implements OnInit {
-
+  showCamera: boolean = true;
   navCtrl: NavController
   isApp: boolean = false;
 
@@ -30,9 +30,11 @@ export class ScannerPage implements OnInit {
   }
 
   async startScan(){
+    this.showCamera = true;
     await BarcodeScanner.checkPermission({ force: true });
     BarcodeScanner.hideBackground();
     const result = await BarcodeScanner.startScan();
+    this.showCamera = false;
     if (result.hasContent) {
       alert('Resultado: ' + result.content);
       console.log(result.content);
@@ -57,6 +59,8 @@ export class ScannerPage implements OnInit {
 
   stopScan(){
     BarcodeScanner.stopScan();
+    BarcodeScanner.showBackground();
+    this.showCamera = false;
     this.navCtrl.back();
   }
 

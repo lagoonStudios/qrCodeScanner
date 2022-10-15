@@ -1,21 +1,33 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-button (click)="stopScan()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>scanner</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [style.--background]="'#fff'">
-  
-  <ion-icon
-  style="position: absolute; bottom: 10px; right: 10px"
-  (click)="stopScan()"
-  color="blanco"
-  size="large"
-  name="close"
-></ion-icon>
-
-
+<ion-content [style.--background]="showCamera ? '#00000000' : '#fff'">
+  <ion-grid
+    style="width: 100%; height: 100%; background-color: transparent"
+    *ngIf="showCamera === true"
+  >
+    <ion-row class="ion-align-items-center" style="height: 100%">
+      <ion-col style="height: 100%">
+        <div style="height: 100%; width: 100%">
+          <div class="scan-box"></div>
+          
+          <ion-icon
+            style="position: absolute; top: 10px; right: 10px"
+            (click)="stopScan()"
+            color="blanco"
+            size="large"
+            name="close"
+          ></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

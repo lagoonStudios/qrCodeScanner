@@ -1,0 +1,12 @@
+.scan-box {
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 100vmax rgb(0, 0, 0, 0.5);
+    content: "";
+    display: block;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
