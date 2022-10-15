@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>scanner</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [style.--background]="'#fff'">
+  
+  <ion-icon
+  style="position: absolute; bottom: 10px; right: 10px"
+  (click)="stopScan()"
+  color="blanco"
+  size="large"
+  name="close"
+></ion-icon>
+
+
+</ion-content>

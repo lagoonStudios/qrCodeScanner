@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { Capacitor } from '@capacitor/core';
 
 
 @Component({
@@ -9,21 +9,12 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 })
 export class HomePage implements OnInit {
 
+  isApp: boolean = false;
+
   constructor() { 
-    
+    this.isApp = Capacitor.isNativePlatform();
   }
 
-  ngOnInit() {
-    BarcodeScanner.prepare();
-  }
-
-  async startScan(){
-    await BarcodeScanner.checkPermission({ force: true });
-    BarcodeScanner.hideBackground();
-    const result = await BarcodeScanner.startScan();
-    if (result.hasContent) {
-      console.log(result.content);
-    }
-  }
+  ngOnInit() {}
 
 }
