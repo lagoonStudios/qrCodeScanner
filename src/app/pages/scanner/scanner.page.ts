@@ -1,8 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Capacitor } from '@capacitor/core';
-import { NavController } from '@ionic/angular';
 import { RegisterService } from '../../services/register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scanner',
@@ -11,11 +11,9 @@ import { RegisterService } from '../../services/register.service';
 })
 export class ScannerPage implements OnInit {
   showCamera: boolean = true;
-  navCtrl: NavController
   isApp: boolean = false;
 
-  constructor(injector: Injector, private registerService: RegisterService) { 
-    this.navCtrl = injector.get(NavController);
+  constructor(injector: Injector, private registerService: RegisterService, private router: Router) { 
     this.isApp = Capacitor.isNativePlatform();
   }
 
@@ -38,7 +36,7 @@ export class ScannerPage implements OnInit {
     this.showCamera = false;
     if (result.hasContent) {
       this.registerService.confirmAssistance(result.content);
-      this.navCtrl.back();
+      this.router.navigate(['/home']);
       console.log(result.content);
     }
   }
@@ -63,7 +61,7 @@ export class ScannerPage implements OnInit {
     BarcodeScanner.stopScan();
     BarcodeScanner.showBackground();
     this.showCamera = false;
-    this.navCtrl.back();
+    this.router.navigate(['/home']);
   }
 
 
