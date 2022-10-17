@@ -1,21 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      QR Code Scanner
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-grid fixed>
+<ion-content [fullscreen]="true" class="background-image">
+  <ion-grid style="width: 80%; position: absolute; top: 8%; left: 10%; right: 10%">
     <ion-row>
-      <ion-col size-xs="12" size-md="6">
-        <ion-button [routerLink]="['/scanner']" expand="block" shape="round" [disabled]="!isApp">
-          Scanear
+      <ion-col size="12">
+        <img src="../../../assets/img/RepensarLogo.svg" alt="Logo Repensar">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button
+          [routerLink]="['/scanner']"
+          fill="clear"
+          expand="block"
+          [disabled]="!isApp"
+        >
+          Escanear QR
         </ion-button>
       </ion-col>
-      <ion-col size-xs="12" size-md="6">
-        <ion-button  expand="block" shape="round">
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" fill="clear">
           Registrar
         </ion-button>
       </ion-col>
