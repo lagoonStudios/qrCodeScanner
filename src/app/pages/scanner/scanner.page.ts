@@ -2,6 +2,7 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Capacitor } from '@capacitor/core';
 import { NavController } from '@ionic/angular';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   selector: 'app-scanner',
@@ -13,7 +14,7 @@ export class ScannerPage implements OnInit {
   navCtrl: NavController
   isApp: boolean = false;
 
-  constructor(injector: Injector) { 
+  constructor(injector: Injector, private registerService: RegisterService) { 
     this.navCtrl = injector.get(NavController);
     this.isApp = Capacitor.isNativePlatform();
   }
@@ -36,8 +37,8 @@ export class ScannerPage implements OnInit {
     const result = await BarcodeScanner.startScan();
     this.showCamera = false;
     if (result.hasContent) {
-      //TODO Mostrar un toast y navegar hacia la otra pagina.
-      alert('Resultado: ' + result.content);
+      this.registerService.confirmAssistance("avilanalexisaz@gmail.com");
+      this.navCtrl.back();
       console.log(result.content);
     }
   }

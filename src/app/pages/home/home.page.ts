@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
+import { RegisterService } from '../../services/register.service';
 
 
 @Component({
@@ -11,10 +12,14 @@ export class HomePage implements OnInit {
 
   isApp: boolean = false;
 
-  constructor() { 
+  constructor(private registerService: RegisterService) { 
     this.isApp = Capacitor.isNativePlatform();
   }
 
   ngOnInit() {}
+
+  pruebaregistro(){
+    this.registerService.confirmAssistance("avilanalexisaz@gmail.com");
+  }
 
 }
