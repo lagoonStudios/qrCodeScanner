@@ -22,7 +22,7 @@ export class FormPage implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
-      CI: [''],
+      CI: ['', [Validators.required]],
       tlf: [''],
       socialMedia: [''],
       institution: [''],

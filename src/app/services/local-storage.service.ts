@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { Register } from 'src/models/register.model';
-import { RegisterService } from './register.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
-  constructor(private registerService: RegisterService) {}
+  constructor() {}
 
   async setRegisters(registers: Register[]) {
     await Preferences.set({

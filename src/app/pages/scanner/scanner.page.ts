@@ -37,7 +37,7 @@ export class ScannerPage implements OnInit {
     const result = await BarcodeScanner.startScan();
     this.showCamera = false;
     if (result.hasContent) {
-      this.registerService.confirmAssistance("avilanalexisaz@gmail.com");
+      this.registerService.confirmAssistance(result.content);
       this.navCtrl.back();
       console.log(result.content);
     }
