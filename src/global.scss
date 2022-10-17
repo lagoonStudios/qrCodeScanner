@@ -30,6 +30,12 @@
     font-family: Raleway;
 }
 
+.label-medium {
+    font-family: "Raleway-Bold" !important;
+    color: #000;
+    opacity: 0.7;
+  }
+
 ion-button{
     height: 54px;
     --color: #000000;
@@ -39,11 +45,24 @@ ion-button{
     --border-radius: 20px
 }
 
-.background-image{
-    --background: url(./assets/img/background.svg) 0 0/100% 100% no-repeat;
+ion-item{
+    --border-radius: 5px;
+    --border-width: 1px;
+    --border-color: #0099CC;
+    ion-label{
+        color: #000 !important;
+    }
+    
 }
 
-.background-image-opacity{
-    --background: url(./assets/img/background.svg) no-repeat;
-    opacity: 0.2;  
+
+
+ion-content{
+    &.background-image{
+        --background: url(./assets/img/background.svg) 0 0/100% 100% no-repeat;
+    }
+
+    &.background-image-opac{
+        --background:  linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(./assets/img/background.svg) no-repeat;
+    }
 }

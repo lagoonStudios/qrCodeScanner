@@ -15,6 +15,11 @@ export class AppComponent {
     private registerService: RegisterService,
     private toastController: ToastController
   ) {
+    this.getRegisters();
+    this.storage.createBackup()
+  }
+
+  getRegisters(){
     this.storage.getRegisters().then(
       (res) => {
         if (res == null) {

@@ -1,6 +1,6 @@
 export interface Register {
     "Marca temporal":                  string;
-    Puntuación:                        string;
+    Puntuación:                        any;
     "Nombres y Apellidos":             string;
     "Cédula de Identidad":             number | string;
     "Teléfono móvil":                  number | string;

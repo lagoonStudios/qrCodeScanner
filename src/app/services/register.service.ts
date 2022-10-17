@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Register } from 'src/models/register.model';
 import { AlertController } from '@ionic/angular';
+import { find } from 'lodash';
 
 @Injectable({
   providedIn: 'root',
@@ -47,5 +48,18 @@ export class RegisterService {
       });
       toast.present();
     }
+  }
+
+  async RegisterNewUser(register: Register) {
+    const exists: boolean = find(this.registers$, (reg: Register) => {
+      return (
+        reg['Dirección de correo electrónico'] ===
+        register['Dirección de correo electrónico']
+      );
+    });
+    if (exists == undefined) {
+      this.registers$.push(register);
+      alert('Registro exitoso');
+    } else alert('Usuario ya existente');
   }
 }

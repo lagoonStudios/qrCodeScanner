@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
 import { RegisterService } from '../../services/register.service';
 
@@ -12,14 +13,14 @@ export class HomePage implements OnInit {
 
   isApp: boolean = false;
 
-  constructor(private registerService: RegisterService) { 
+  constructor(private registerService: RegisterService, private router: Router) { 
     this.isApp = Capacitor.isNativePlatform();
   }
 
   ngOnInit() {}
 
-  pruebaregistro(){
-    this.registerService.confirmAssistance("avilanalexisaz@gmail.com");
+  goToForm(){
+    this.router.navigate(['/form']);
   }
 
 }
