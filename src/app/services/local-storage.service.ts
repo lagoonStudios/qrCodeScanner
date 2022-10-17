@@ -21,14 +21,4 @@ export class LocalStorageService {
     if (ret.value !== 'undefined') return JSON.parse(ret.value);
     else return null;
   }
-
-  createBackup() {
-    setInterval(async () => {
-      await Preferences.set({
-        key: 'Registers',
-        value: JSON.stringify(this.registerService.registers$),
-      });
-      console.log('backup', this.registerService.registers$);
-    }, 600000);
-  }
 }

@@ -16,7 +16,6 @@ export class AppComponent {
     private toastController: ToastController
   ) {
     this.getRegisters();
-    this.storage.createBackup()
   }
 
   getRegisters(){

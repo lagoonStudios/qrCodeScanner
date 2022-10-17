@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Register } from 'src/models/register.model';
 import { AlertController } from '@ionic/angular';
 import { find } from 'lodash';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { find } from 'lodash';
 export class RegisterService {
   registers$: Register[] = [];
 
-  constructor(private alertController: AlertController) {}
+  constructor(private alertController: AlertController, private sotrage: LocalStorageService) {}
 
   async confirmAssistance(email: string) {
     const ind = this.registers$.findIndex((reg) => {
@@ -59,6 +60,7 @@ export class RegisterService {
     });
     if (exists == undefined) {
       this.registers$.push(register);
+      this.sotrage.setRegisters(this.registers$);
       alert('Registro exitoso');
     } else alert('Usuario ya existente');
   }
