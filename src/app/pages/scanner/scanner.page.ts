@@ -36,6 +36,7 @@ export class ScannerPage implements OnInit {
     const result = await BarcodeScanner.startScan();
     this.showCamera = false;
     if (result.hasContent) {
+      //TODO Mostrar un toast y navegar hacia la otra pagina.
       alert('Resultado: ' + result.content);
       console.log(result.content);
     }

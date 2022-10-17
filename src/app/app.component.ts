@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { rawRegisters } from 'src/assets/data/rawRegisters';
+import { RegisterService } from './services/register.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private registerService: RegisterService ) {
+    this.registerService.registers$ = rawRegisters;
+    console.log('Se copia los datos desde el rawRegisters.ts al registerService');
+  }
 }
