@@ -55,8 +55,6 @@ ion-item{
     
 }
 
-
-
 ion-content{
     &.background-image{
         --background: url(./assets/img/background.svg) 0 0/100% 100% no-repeat;
@@ -65,4 +63,10 @@ ion-content{
     &.background-image-opac{
         --background:  linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(./assets/img/background.svg) no-repeat;
     }
+}
+
+.checkmark{
+    max-width: 150px;
+    margin-bottom: 5px;
+
 }

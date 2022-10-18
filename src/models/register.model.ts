@@ -9,5 +9,6 @@ export interface Register {
     "Institución de donde vienes":     string;
     Ocupación:                         string;
     "Dirección de correo electrónico": string;
-    Asistencia?: boolean;
+    Asistencia?:                       boolean;
+    Id?:                               string;
 }

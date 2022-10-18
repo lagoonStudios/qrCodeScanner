@@ -3,6 +3,11 @@ import { Register } from 'src/models/register.model';
 import { AlertController } from '@ionic/angular';
 import { find } from 'lodash';
 import { LocalStorageService } from './local-storage.service';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +15,11 @@ import { LocalStorageService } from './local-storage.service';
 export class RegisterService {
   registers$: Register[] = [];
 
-  constructor(private alertController: AlertController, private sotrage: LocalStorageService) {}
+  constructor(
+    private alertController: AlertController,
+    private sotrage: LocalStorageService,
+    public FireStore: AngularFirestore
+  ) {}
 
   async confirmAssistance(email: string) {
     const ind = this.registers$.findIndex((reg) => {
@@ -20,7 +29,7 @@ export class RegisterService {
       this.registers$[ind].Asistencia = true;
 
       const msg =
-        '<ion-grid><ion-row><ion-col class="ion-text-center"><ion-icon name="checkmark-outline" color="primary"></ion-icon><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
+        '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
         email;
       console.log('Se registra asistencia del correo: ', email);
       const toast = await this.alertController.create({
@@ -35,7 +44,7 @@ export class RegisterService {
       toast.present();
     } else {
       const msg =
-        '<ion-grid><ion-row><ion-col class="ion-text-center"><ion-icon name="close-outline" color="danger"></ion-icon><br/><ion-text><ion-label>No se encontró registro</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
+        '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /><br/><ion-text><ion-label>No se encontró registro</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
         email;
 
       const toast = await this.alertController.create({
@@ -61,15 +70,27 @@ export class RegisterService {
     if (exists == undefined) {
       this.registers$.push(register);
       this.sotrage.setRegisters(this.registers$);
+      this.createDocs(register, 'Registros');
       const msg =
-        '<ion-grid><ion-row><ion-col class="ion-text-center"><ion-icon name="checkmark-outline" color="primary"></ion-icon><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>';
-      let alert = await this.alertController.create({message: msg});
+        '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /></ion-icon><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>';
+      let alert = await this.alertController.create({ message: msg });
       alert.present();
     } else {
       const msg =
-        '<ion-grid><ion-row><ion-col class="ion-text-center"><ion-icon name="close-outline" color="danger"></ion-icon><br/><ion-text><ion-label>El usuario ya está registrado</ion-label></ion-text></ion-col></ion-row></ion-grid>';
-      let alert = await this.alertController.create({message: msg});
+        '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /></ion-icon><br/><ion-text><ion-label>El usuario ya está registrado</ion-label></ion-text></ion-col></ion-row></ion-grid>';
+      let alert = await this.alertController.create({ message: msg });
       alert.present();
-    };
+    }
+  }
+
+  createDocs(data: Register, url: string) {
+    data.Id = this.FireStore.createId();
+    let ref = this.FireStore.collection<Register>(url);
+    return ref.doc().set(data);
+  }
+
+  getRegisters(): Observable<Register[]> {
+    const items = this.FireStore.collection<Register>('Registros');
+    return items.valueChanges();
   }
 }
