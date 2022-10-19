@@ -5,7 +5,6 @@ import { find } from 'lodash';
 import { LocalStorageService } from './local-storage.service';
 import {
   AngularFirestore,
-  AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 

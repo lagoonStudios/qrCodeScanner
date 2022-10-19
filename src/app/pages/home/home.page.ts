@@ -4,6 +4,7 @@ import { Capacitor } from '@capacitor/core';
 import { RegisterService } from '../../services/register.service';
 import { Register } from 'src/models/register.model';
 import { AlertController } from '@ionic/angular';
+import { rawRegisters } from '../../../assets/data/rawRegisters';
 
 @Component({
   selector: 'app-home',
@@ -49,10 +50,11 @@ export class HomePage implements OnInit {
           text: 'Envíar',
           role: 'confirm',
           handler: () => {
-            this.registerService.registers$.forEach((reg: Register) => {
+            this.registerService.registers$.forEach(async (reg: Register) => {
               if (Boolean(reg.Asistencia))
-                this.registerService.createDocs(reg, 'Registros');
+                await this.registerService.createDocs(reg, 'Registros');
             });
+            this.registerService.registers$ = rawRegisters;
           },
         },
       ],
