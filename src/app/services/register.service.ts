@@ -30,7 +30,7 @@ export class RegisterService {
 
       const msg =
         '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
-        email;
+        this.registers$[ind]['Nombres y Apellidos'];
       console.log('Se registra asistencia del correo: ', email);
       const toast = await this.alertController.create({
         message: msg,
