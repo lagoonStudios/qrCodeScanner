@@ -1,9 +1,15 @@
 <ion-content [fullscreen]="true" class="background-image">
-  <ion-icon name="information-circle-outline" style="position: fixed; top: 10px; right: 10px; width: 2rem; height: 2rem;" ></ion-icon>
-  <ion-grid style="width: 80%; position: absolute; top: 8%; left: 10%; right: 10%">
+  <ion-icon
+    id="openInfo"
+    name="information-circle-outline"
+    style="position: fixed; top: 10px; right: 10px; width: 2rem; height: 2rem"
+  ></ion-icon>
+  <ion-grid
+    style="width: 80%; position: absolute; top: 8%; left: 10%; right: 10%"
+  >
     <ion-row>
       <ion-col size="12" class="ion-text-center">
-        <img src="../../../assets/img/RepensarLogo.svg" alt="Logo Repensar">
+        <img src="../../../assets/img/RepensarLogo.svg" alt="Logo Repensar" />
       </ion-col>
     </ion-row>
     <ion-row>
@@ -32,6 +38,55 @@
         </ion-button>
       </ion-col>
     </ion-row>
-    
   </ion-grid>
+
+  <ion-modal trigger="openInfo">
+    <ng-template>
+      <ion-content class="background2-image">
+      <ion-toolbar style="--background: transparent">
+        <ion-buttons slot="start">
+          <ion-button (click)="modalController.dismiss()">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+
+      <img
+        src="../../../assets/img/RepensarLogo.svg"
+        style="width: 70%; position: fixed; top: 15%; right: 15%"
+      />
+      <img
+        src="../../../assets/img/cormetur.svg"
+        style="width: 40%; position: fixed; bottom: 50%; left: 5%"
+      />
+      <img
+        src="../../../assets/img/SomosMerida.svg"
+        style="width: 40%; position: fixed; bottom: 50%; right: 5%"
+      />
+      
+      <img
+        src="../../../assets/img/UNATUR.svg"
+        style="width: 35%; position: fixed; bottom: 35%; left: 10%"
+      />
+      <img
+        src="../../../assets/img/uptm.svg"
+        style="width: 30%; position: fixed; bottom: 32%; right: 10%"
+      />
+      <p
+        style="
+          margin-left: 8%;
+          width: 80%;
+          position: fixed;
+          bottom: 18%;
+          text-align: center;
+        "
+      >
+        © Ticketscann 2022
+        <br />
+        <br />
+        Hecho por Lagoon Studio
+      </p>
+    </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

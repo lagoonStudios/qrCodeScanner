@@ -60,10 +60,15 @@ ion-content{
         --background: url(./assets/img/background.svg) 0 0/100% 100% no-repeat;
     }
 
+    &.background2-image{
+        --background: url(./assets/img/background2.svg) 0 0/100% 100% no-repeat;
+    }
+
     &.background-image-opac{
         --background:  linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(./assets/img/background.svg) no-repeat;
     }
 }
+
 
 .checkmark{
     max-width: 150px;

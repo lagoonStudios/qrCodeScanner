@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
 import { RegisterService } from '../../services/register.service';
 import { Register } from 'src/models/register.model';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { rawRegisters } from '../../../assets/data/rawRegisters';
 
 @Component({
@@ -17,7 +17,8 @@ export class HomePage implements OnInit {
   constructor(
     private registerService: RegisterService,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    protected modalController: ModalController
   ) {
     this.isApp = Capacitor.isNativePlatform();
   }
@@ -49,12 +50,23 @@ export class HomePage implements OnInit {
         {
           text: 'Envíar',
           role: 'confirm',
-          handler: () => {
+          handler: async () => {
+            let msg2 = '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /></ion-icon><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>';
             this.registerService.registers$.forEach(async (reg: Register) => {
               if (Boolean(reg.Asistencia))
                 await this.registerService.createDocs(reg, 'Registros');
             });
             this.registerService.registers$ = rawRegisters;
+            let alert2 = await this.alertController.create({
+              message: msg2,
+              buttons: [
+                {
+                  text: 'Ok',
+                  role: 'destructive'
+                }
+              ]
+            });
+            alert2.present();
           },
         },
       ],
