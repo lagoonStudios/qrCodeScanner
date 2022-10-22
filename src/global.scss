@@ -52,7 +52,15 @@ ion-item{
     ion-label{
         color: #000 !important;
     }
-    
+}
+
+.box-container{
+    --border-radius: 5px;
+    --border-width: 1px;
+    --border-color: #0099CC;
+    ion-label{
+        color: #000 !important;
+    }
 }
 
 ion-content{

@@ -13,6 +13,8 @@ import { NavController } from '@ionic/angular';
 export class FormPage implements OnInit {
   constructor(private formBuilder: FormBuilder, private registerServise: RegisterService, private navCtrl: NavController) {}
   form: FormGroup;
+  disableBtn: boolean = false;
+  userExists: boolean = false;
 
   ngOnInit() {
     this.buildForm();
@@ -22,7 +24,7 @@ export class FormPage implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
-      CI: ['', [Validators.required]],
+      CI: ['',],
       tlf: [''],
       socialMedia: [''],
       institution: [''],
@@ -30,7 +32,7 @@ export class FormPage implements OnInit {
   }
 
   submitForm() {
-    if (this.form.valid) {
+    if (this.form.valid && !this.userExists) {
       let register: Register = {
         'Nombres y Apellidos': escape(this.form.controls.name.value)
           .__wrapped__,
@@ -56,5 +58,27 @@ export class FormPage implements OnInit {
     } else {
       console.log('Debes llenar los campos requeridos');
     }
+  }
+
+  verifyAssistance(): boolean{
+    const ind = this.registerServise.registers$.findIndex((reg) => {
+      return reg['Dirección de correo electrónico'] === this.form.controls['email'].value;
+    });
+    if(ind !== -1 && this.form.controls['email'].value != ''){
+      this.disableBtn = true;
+      this.userExists = true;
+      return true
+    }else{
+      this.disableBtn = false;
+      this.userExists = false;
+      return false
+    }
+  }
+
+  confirmassistance(){
+    console.log('Confirmando', this.form.controls['email'].value);
+    this.disableBtn = true;
+    this.navCtrl.back();
+    this.registerServise.confirmAssistance(this.form.controls['email'].value);
   }
 }

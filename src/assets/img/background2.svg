@@ -1,34 +1,34 @@
-<svg width="360" height="800" viewBox="0 0 360 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_65_23)">
-<rect width="360" height="800" fill="white"/>
-<g filter="url(#filter0_d_65_23)">
+<svg width="100%" height="100%" viewBox="0 0 360 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<rect width="360" height="800"/>
+
 <circle cx="397" cy="39" r="159" fill="#FF00CC"/>
-</g>
-<g filter="url(#filter1_d_65_23)">
+
+
 <rect x="76" y="65" width="134" height="20" fill="#0099CC"/>
-</g>
-<g filter="url(#filter2_d_65_23)">
+
+
 <rect x="78" y="94" width="22" height="22" fill="#FF00CC"/>
-</g>
-<g filter="url(#filter3_d_65_23)">
+
+
 <path d="M139 39L175 79" stroke="#BD3BDD" stroke-width="5"/>
-</g>
-<g filter="url(#filter4_d_65_23)">
+
+
 <path d="M139 59L175 98" stroke="#BD3BDD" stroke-width="5"/>
-</g>
-<g filter="url(#filter5_d_65_23)">
+
+
 <path d="M139 75L175 115" stroke="#BD3BDD" stroke-width="5"/>
-</g>
-<g filter="url(#filter6_d_65_23)">
+
+
 <path d="M139 95L175 135" stroke="#BD3BDD" stroke-width="5"/>
-</g>
-<g filter="url(#filter7_d_65_23)">
+
+
 <circle cx="33.5" cy="786.5" r="83.5" fill="#FF00CC"/>
-</g>
-<g filter="url(#filter8_d_65_23)">
+
+
 <circle cx="386" cy="750" r="129" fill="#0099CC" fill-opacity="0.7" shape-rendering="crispEdges"/>
-</g>
-</g>
+
+
 <defs>
 <filter id="filter0_d_65_23" x="234" y="-120" width="326" height="326" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>

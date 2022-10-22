@@ -28,7 +28,7 @@ export class RegisterService {
       this.registers$[ind].Asistencia = true;
 
       const msg =
-        '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
+        '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /></ion-icon><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
         this.registers$[ind]['Nombres y Apellidos'];
       console.log('Se registra asistencia del correo: ', email);
       const toast = await this.alertController.create({
@@ -43,7 +43,7 @@ export class RegisterService {
       toast.present();
     } else {
       const msg =
-        '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /><br/><ion-text><ion-label>No se encontró registro</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
+        '<ion-grid><ion-row><ion-col class="ion-text-center"><ion-icon name="close-outline"></ion-icon><br/><ion-text><ion-label>No se encontró registro</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
         email;
 
       const toast = await this.alertController.create({
@@ -71,7 +71,8 @@ export class RegisterService {
       this.sotrage.setRegisters(this.registers$);
       this.createDocs(register, 'Registros');
       const msg =
-        '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /></ion-icon><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>';
+        '<ion-grid><ion-row><ion-col class="ion-text-center"><img src="../../assets/img/checkmark.svg" class="checkmark" /></ion-icon><br/><ion-text><ion-label>¡Registro exitoso!</ion-label></ion-text></ion-col></ion-row></ion-grid>' +
+        register['Nombres y Apellidos'];
       let alert = await this.alertController.create({ message: msg });
       alert.present();
     } else {
