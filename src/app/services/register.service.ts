@@ -1,37 +1,64 @@
 import { Injectable } from '@angular/core';
-import { Register } from 'src/models/register.model';
 import { AlertController } from '@ionic/angular';
-import { find } from 'lodash';
-import {
-  AngularFirestore,
-} from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RegisterService {
-  // registers$: Register[] = [];
+  loading: HTMLIonAlertElement;
 
   constructor(
     private alertController: AlertController,
     public FireStore: AngularFirestore
   ) {}
 
-  async confirmAssistance(email: string) {
-  }
-
-  async RegisterNewUser(register: Register) {
-    await this.createDocs(register, 'Registers');
-  }
-
-  createDocs(data: any, url: string) {
+  setDoc(data: any, url: string) {
     let ref = this.FireStore.collection<any>(url);
     return ref.doc().set(data);
   }
 
-  getRegisters(): Observable<Register[]> {
-    const items = this.FireStore.collection<Register>('Registers');
-    return items.valueChanges();
+  confirmAssistance(CI: string) {
+    this.showLoadingView();
+    this.FireStore.doc('Registers/' + CI)
+      .get()
+      .subscribe((res) => {
+        const data: any = res.data();
+        console.log(data);
+        if (data) {
+          if (data.attendance === false) {
+            this.FireStore.doc('Registers/' + CI).update({ attendance: true });
+            this.showAlert('Registro exitoso');
+          } else {
+            this.showAlert('El usuario ya fué verificado una vez');
+          }
+        } else {
+          this.showAlert('El usuario no existe');
+        }
+        this.dismissLoadingView();
+      });
+  }
+
+  async showAlert(msj: string) {
+    // A este se le puede poner un icono de confirmacion
+    const alert = await this.alertController.create({
+      message: msj,
+    });
+    alert.present();
+  }
+
+  async showLoadingView() {
+    // A este se le puede poner un loader
+    this.loading = await this.alertController.create({
+      backdropDismiss: false,
+      message: 'Cargando...',
+    });
+    this.loading.present();
+  }
+
+  dismissLoadingView() {
+    if (this.loading) {
+      this.loading.dismiss();
+    }
   }
 }

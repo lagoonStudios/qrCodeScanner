@@ -67,21 +67,6 @@
       </ion-row>
 
       <ion-row>
-        <ion-col size="12">
-          <ion-label class="label-medium"> Tipo de donativo </ion-label>
-          <ion-item>
-            <ion-select value="alimentos" placeholder="Tipo de donativo" formControlName="donative_type">
-              <ion-select-option value="juguete">Juguete o Instrumento</ion-select-option>
-              <ion-select-option value="ropa">Vestimenta</ion-select-option>
-              <ion-select-option value="medicina">Medicina o Alimentos No Perecederos</ion-select-option>
-              <ion-select-option value="alimentos">Alimentos No Perecederos</ion-select-option>
-              <ion-select-option value="otro">Otro</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
         <ion-col size="12" class="ion-text-center">
           <ion-button [disabled]="!form.valid || disableBtn" type="submit" color="tertiary" style="min-width: 200px; margin-top: 10px"> Guardar </ion-button>
         </ion-col>
