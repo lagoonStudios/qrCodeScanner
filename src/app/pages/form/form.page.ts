@@ -11,7 +11,11 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./form.page.scss'],
 })
 export class FormPage implements OnInit {
-  constructor(private formBuilder: FormBuilder, private registerServise: RegisterService, private navCtrl: NavController) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private registerServise: RegisterService,
+    private navCtrl: NavController
+  ) {}
   form: FormGroup;
   disableBtn: boolean = false;
   userExists: boolean = false;
@@ -24,58 +28,32 @@ export class FormPage implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
-      CI: ['',],
-      tlf: [''],
-      socialMedia: [''],
-      institution: [''],
+      CI: ['', [Validators.required, Validators.min(0)]],
+      donative_type: [''],
     });
   }
 
   submitForm() {
     if (this.form.valid && !this.userExists) {
       let register: Register = {
-        'Nombres y Apellidos': escape(this.form.controls.name.value)
-          .__wrapped__,
-        'Dirección de correo electrónico': escape(
-          this.form.controls.email.value
-        ).__wrapped__,
-        'Cédula de Identidad': escape(this.form.controls.CI.value).__wrapped__,
-        'Teléfono móvil': escape(this.form.controls.tlf.value).__wrapped__,
-        'Redes sociales': escape(this.form.controls.socialMedia.value)
-          .__wrapped__,
-        'Institución de donde vienes': escape(
-          this.form.controls.institution.value
-        ).__wrapped__,
-        'Marca temporal': new Date().toISOString(),
-        'Teléfono de habitación': '',
-        Ocupación: '',
-        Asistencia: true,
-        Puntuación: '',
+        name: escape(this.form.controls.name.value).__wrapped__,
+        email: escape(this.form.controls.email.value).__wrapped__,
+        id: escape(this.form.controls.CI.value).__wrapped__,
+        attendance: true,
+        donative: false,
+        donative_type: this.form.controls['donative_type'].value,
       };
-      this.registerServise.RegisterNewUser(register)
-      this.navCtrl.back();
-      ;
+      console.log(register);
+      // this.registerServise.RegisterNewUser(register);
+      // this.navCtrl.back();
     } else {
       console.log('Debes llenar los campos requeridos');
     }
   }
 
-  verifyAssistance(): boolean{
-    const ind = this.registerServise.registers$.findIndex((reg) => {
-      return reg['Dirección de correo electrónico'] === this.form.controls['email'].value;
-    });
-    if(ind !== -1 && this.form.controls['email'].value != ''){
-      this.disableBtn = true;
-      this.userExists = true;
-      return true
-    }else{
-      this.disableBtn = false;
-      this.userExists = false;
-      return false
-    }
-  }
+  verifyAssistance() {}
 
-  confirmassistance(){
+  confirmassistance() {
     console.log('Confirmando', this.form.controls['email'].value);
     this.disableBtn = true;
     this.navCtrl.back();

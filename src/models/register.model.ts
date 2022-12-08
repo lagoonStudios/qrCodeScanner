@@ -1,14 +1,8 @@
 export interface Register {
-    "Marca temporal":                  string;
-    Puntuación:                        any;
-    "Nombres y Apellidos":             string;
-    "Cédula de Identidad":             number | string;
-    "Teléfono móvil":                  number | string;
-    "Teléfono de habitación":          number | string;
-    "Redes sociales":                  string;
-    "Institución de donde vienes":     string;
-    Ocupación:                         string;
-    "Dirección de correo electrónico": string;
-    Asistencia?:                       boolean;
-    Id?:                               string;
+    name: string,
+    email: string,
+    id: string,
+    donative: boolean,
+    donative_type: 'instrumento' | 'ropa' | 'juguete' | 'comida' | 'medicina' | 'otro',
+    attendance: boolean,
 }
