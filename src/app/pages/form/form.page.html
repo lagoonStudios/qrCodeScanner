@@ -68,40 +68,15 @@
 
       <ion-row>
         <ion-col size="12">
-          <ion-label class="label-medium"> Teléfono móvil </ion-label>
-          <ion-item style="margin-top: 5px"> 
-            <ion-input
-              type="number"
-              placeholder="Telefono móvil"
-              formControlName="tlf"
-            ></ion-input>
-            <ion-note slot="error" *ngIf="form.controls['CI'].touched">Número de telefono inválido</ion-note>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="12">
-          <ion-label class="label-medium"> Redes sociales </ion-label>
-          <ion-item style="margin-top: 5px"> 
-            <ion-input
-              type="text"
-              placeholder="Redes sociales"
-              formControlName="socialMedia"
-            ></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      
-      <ion-row>
-        <ion-col size="12">
-          <ion-label class="label-medium"> Institución de donde vienes </ion-label>
-          <ion-item style="margin-top: 5px"> 
-            <ion-input
-              type="text"
-              placeholder="Institución de donde vienes"
-              formControlName="institution"
-            ></ion-input>
+          <ion-label class="label-medium"> Tipo de donativo </ion-label>
+          <ion-item>
+            <ion-select value="alimentos" placeholder="Tipo de donativo" formControlName="donative_type">
+              <ion-select-option value="juguete">Juguete o Instrumento</ion-select-option>
+              <ion-select-option value="ropa">Vestimenta</ion-select-option>
+              <ion-select-option value="medicina">Medicina o Alimentos No Perecederos</ion-select-option>
+              <ion-select-option value="alimentos">Alimentos No Perecederos</ion-select-option>
+              <ion-select-option value="otro">Otro</ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-col>
       </ion-row>

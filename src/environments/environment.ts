@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyD3SddEWVPjqFRjZKlnT50iEKn3_P9h3EA",
-    authDomain: "qrcodescanner-6bbe6.firebaseapp.com",
-    projectId: "qrcodescanner-6bbe6",
-    storageBucket: "qrcodescanner-6bbe6.appspot.com",
-    messagingSenderId: "542618953318",
-    appId: "1:542618953318:web:d6a045aa5473b2bb4fefa7",
-    measurementId: "G-HZG6EQSP8R"
+    apiKey: "AIzaSyDlszimD_kJl3gvig5Kp9-sA-Iq7vapQ6U",
+    authDomain: "ticketscann.firebaseapp.com",
+    projectId: "ticketscann",
+    storageBucket: "ticketscann.appspot.com",
+    messagingSenderId: "425710992126",
+    appId: "1:425710992126:web:476972027670f4bdeb43af",
+    measurementId: "G-LT0B306Y3B"
   }
 };
 
