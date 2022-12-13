@@ -25,15 +25,16 @@ export class FormPage implements OnInit {
 
   buildForm() {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.email, Validators.required]],
-      CI: ['', [Validators.required, Validators.min(0), Validators.minLength(6)]],
+      CI: [
+        '',
+        [Validators.required, Validators.min(0), Validators.minLength(6)],
+      ],
     });
   }
 
   submitForm() {
     if (this.form.valid) {
-      const cedula = this.form.controls['CI'].value
+      const cedula = this.form.controls['CI'].value;
       this.registerServise.confirmAssistance(cedula);
       // this.navCtrl.back();
     } else {

@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,61 +25,62 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
-*{
-    font-family: Raleway;
+* {
+  font-family: Raleway;
 }
 
 .label-medium {
-    font-family: "Raleway-Bold" !important;
-    color: #000;
-    opacity: 0.7;
+  font-family: "Raleway-Bold" !important;
+  color: #000;
+  opacity: 0.7;
+}
+
+ion-button {
+  height: 54px;
+  --color: #000000;
+  --background: #ffffff;
+  --background-activated: var(--ion-color-azul);
+  --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --border-radius: 20px;
+}
+
+ion-item {
+  --border-radius: 5px;
+  --border-width: 1px;
+  --border-color: #0099cc;
+  ion-label {
+    color: #000 !important;
+  }
+}
+
+.box-container {
+  --border-radius: 5px;
+  --border-width: 1px;
+  --border-color: #0099cc;
+  ion-label {
+    color: #000 !important;
+  }
+}
+
+ion-content {
+  &.background-image {
+    --background: url(./assets/img/background.svg) 0 0/100% 100% no-repeat;
   }
 
-ion-button{
-    height: 54px;
-    --color: #000000;
-    --background: #FFFFFF;
-    --background-activated: var(--ion-color-azul);
-    --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    --border-radius: 20px
+  &.background2-image {
+    --background: url(./assets/img/background2.svg) 0 0/100% 100% no-repeat;
+  }
+
+  &.background-image-opac {
+    --background: linear-gradient(
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.9)
+      ),
+      url(./assets/img/background.svg) no-repeat;
+  }
 }
 
-ion-item{
-    --border-radius: 5px;
-    --border-width: 1px;
-    --border-color: #0099CC;
-    ion-label{
-        color: #000 !important;
-    }
-}
-
-.box-container{
-    --border-radius: 5px;
-    --border-width: 1px;
-    --border-color: #0099CC;
-    ion-label{
-        color: #000 !important;
-    }
-}
-
-ion-content{
-    &.background-image{
-        --background: url(./assets/img/background.svg) 0 0/100% 100% no-repeat;
-    }
-
-    &.background2-image{
-        --background: url(./assets/img/background2.svg) 0 0/100% 100% no-repeat;
-    }
-
-    &.background-image-opac{
-        --background:  linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(./assets/img/background.svg) no-repeat;
-    }
-}
-
-
-.checkmark{
-    max-width: 150px;
-    margin-bottom: 5px;
-
+.checkmark {
+  max-width: 150px;
+  margin-bottom: 5px;
 }
