@@ -1,4 +1,4 @@
-<ion-content class="background-image-opac">
+<ion-content color="primary">
   <ion-toolbar style="--background: transparent">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
@@ -10,83 +10,34 @@
 
       <ion-row>
         <ion-col size="12">
-          <ion-label class="label-medium"> Correo Electrónico <ion-label color="tertiary">*</ion-label> </ion-label>
-          <ion-item style="margin-top: 5px">
-            <ion-input
-              type="text"
-              placeholder="ejemplo@gmail.com"
-              formControlName="email"
-              (ionChange)="verifyAssistance()"
-            ></ion-input>
-            <ion-note slot="error" *ngIf="form.controls['email'].touched && form.controls['email'].value != ''">Email inválido</ion-note>
-            <ion-note slot="error" *ngIf="form.controls['email'].touched && form.controls['email'].value == ''">Requerido</ion-note>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-      <ion-row *ngIf="userExists">
-        <ion-col size="12" class="ion-text-center">
-          <div class="box-container">
-            <ion-label class="label-medium">
-              El correo ya está registrado
-              <ion-icon name="checkmark"></ion-icon>
-            </ion-label>
-            <ion-button (click)="confirmassistance()" type="button" expand="block" color="tertiary">
-              Registrar asistencia
-            </ion-button>
-          </div>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="12">
-          <ion-label class="label-medium"> Nombre y Apellido  <ion-label color="tertiary">*</ion-label></ion-label>
-          <ion-item style="margin-top: 5px"> 
-            <ion-input
-              type="text"
-              placeholder="Nombre y Apellido"
-              formControlName="name"
-            ></ion-input>
-            <ion-note slot="error" *ngIf="form.controls['name'].touched">Requerido</ion-note>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="12">
           <ion-label class="label-medium"> Cedula de Identidad </ion-label>
-          <ion-item style="margin-top: 5px"> 
+          <ion-item style="margin-top: 5px">
             <ion-input
               type="number"
               placeholder="Cedula de Identidad"
               formControlName="CI"
+              #inputCI
             ></ion-input>
-            <ion-note slot="error" *ngIf="form.controls['CI'].touched">Requerido</ion-note>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="12">
-          <ion-label class="label-medium"> Tipo de donativo </ion-label>
-          <ion-item>
-            <ion-select value="alimentos" placeholder="Tipo de donativo" formControlName="donative_type">
-              <ion-select-option value="juguete">Juguete o Instrumento</ion-select-option>
-              <ion-select-option value="ropa">Vestimenta</ion-select-option>
-              <ion-select-option value="medicina">Medicina o Alimentos No Perecederos</ion-select-option>
-              <ion-select-option value="alimentos">Alimentos No Perecederos</ion-select-option>
-              <ion-select-option value="otro">Otro</ion-select-option>
-            </ion-select>
+            <ion-note slot="error" *ngIf="form.controls['CI'].touched"
+              ><ion-text color="dark" style="font-size: 1rem">Requerido</ion-text></ion-note
+            >
           </ion-item>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col size="12" class="ion-text-center">
-          <ion-button [disabled]="!form.valid || disableBtn" type="submit" color="tertiary" style="min-width: 200px; margin-top: 10px"> Guardar </ion-button>
+          <ion-button
+            [disabled]="!form.valid || disableBtn"
+            type="submit"
+            color="tertiary"
+            style="min-width: 200px; margin-top: 10px"
+            [disabled]="submitted || form.invalid"
+          >
+            Guardar
+          </ion-button>
         </ion-col>
       </ion-row>
-
     </ion-grid>
   </form>
 </ion-content>

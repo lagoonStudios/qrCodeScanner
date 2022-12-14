@@ -1,15 +1,19 @@
-<ion-content [fullscreen]="true" class="background-image">
-  <ion-icon
-    id="openInfo"
-    name="information-circle-outline"
-    style="position: fixed; top: 10px; right: 10px; width: 2rem; height: 2rem"
-  ></ion-icon>
+<ion-content [fullscreen]="true" color="primary" scroll-y="false">
   <ion-grid
     style="width: 80%; position: absolute; top: 8%; left: 10%; right: 10%"
   >
     <ion-row>
       <ion-col size="12" class="ion-text-center">
-        <img src="../../../assets/img/RepensarLogo.svg" alt="Logo Repensar" />
+        <img
+          src="../../../assets/img/todosameridaText.svg"
+          alt="Todos a Mérida"
+        />
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <img src="../../../assets/img/fechaText.svg" alt="Fecha y lugar" />
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <img src="../../../assets/img/artistsLogo.svg" alt="Logo MicroTDH" />
       </ion-col>
     </ion-row>
     <ion-row>
@@ -26,59 +30,22 @@
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        <ion-button expand="block" fill="clear" (click)="goToForm()">
-          Registrar
+        <ion-button expand="block" fill="clear" [routerLink]="['/form']">
+          Validación
         </ion-button>
       </ion-col>
     </ion-row>
+
+    <ion-row class="ion-align-items-center infoText">
+      <ion-col class="ion-text-center" style="color: #ffffff">
+        <p>
+          © Ticketscann todos los derechos
+          <br />
+          reservados 2022
+          <br />
+          Powered by Lagoon Studio
+        </p>
+      </ion-col>
+    </ion-row>
   </ion-grid>
-
-  <ion-modal trigger="openInfo">
-    <ng-template>
-      <ion-content class="background2-image">
-        <ion-toolbar style="--background: transparent">
-          <ion-buttons slot="start">
-            <ion-button (click)="modalController.dismiss()">
-              <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-
-        <ion-grid style="margin-top: 15vh;">
-            <ion-row class="ion-align-items-center">
-              <ion-col class="ion-text-center">
-                <img src="../../../assets/img/RepensarLogo.svg" />
-              </ion-col>
-            </ion-row>
-            <ion-row class="ion-align-items-center">
-              <ion-col class="ion-text-center">
-                <img src="../../../assets/img/cormetur.svg" />
-              </ion-col>
-              <ion-col class="ion-text-center">
-                <img src="../../../assets/img/SomosMerida.svg" />
-              </ion-col>
-            </ion-row>
-            <ion-row class="ion-align-items-center">
-              <ion-col class="ion-text-center">
-                <img src="../../../assets/img/UNATUR.svg" />
-              </ion-col>
-              <ion-col class="ion-text-center">
-                <img src="../../../assets/img/uptm.svg" />
-              </ion-col>
-            </ion-row>
-
-            <ion-row class="ion-align-items-center">
-              <ion-col class="ion-text-center">
-                <p>
-                  © Ticketscann 2022
-                  <br />
-                  <br />
-                  Hecho por Lagoon Studio
-                </p>
-              </ion-col>
-            </ion-row>
-        </ion-grid>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
 </ion-content>
