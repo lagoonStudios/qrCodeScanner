@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Register } from 'src/models/register.model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,27 +37,32 @@ export class RegisterService {
               this.FireStore.doc('Registers/' + CI).update({
                 attendance: true,
               });
-              this.showAlert('Registro exitoso');
+              this.dismissLoadingView();
+              this.router.navigate(['/home']);
+              this.showAlert('Registro exitoso', data);
             } else {
-              this.showAlert('Registro exitoso (Solo pruebas)');
+              this.dismissLoadingView();
+              this.router.navigate(['/home']);
+              this.showAlert('Registro exitoso (Solo pruebas)', data);
             }
           } else {
-            this.showAlert('El usuario ya fué verificado una vez');
+            this.dismissLoadingView();
+            this.router.navigate(['/home']);
+            this.showAlert('El usuario ya fué verificado una vez', data);
           }
         } else {
-          this.showAlert('El usuario no existe');
-        }
-        this.dismissLoadingView();
-        setTimeout(() => {
+          this.dismissLoadingView();
           this.router.navigate(['/home']);
-        }, 1000);
+          this.showAlert('El usuario no existe', data);
+        }
       });
   }
 
-  async showAlert(msj: string) {
-    // A este se le puede poner un icono de confirmacion
+  async showAlert(msj: string, data: Register) {
+    const mesage = data != undefined ? `<p>Nombre: <b>${data.name}</b></p> <p>Documento de Identidad: <b>${data.id}</b></p>` : '';
     const alert = await this.alertController.create({
-      message: msj,
+      header: msj,
+      message: data != undefined ? mesage : '',
       buttons: [
         {
           text: 'Ok',
@@ -71,15 +77,15 @@ export class RegisterService {
     this.loader = await this.loadingCtrl.create({
       message: 'Cargando...',
       spinner: 'circular',
-      //duration: 3000,
+      backdropDismiss: false,
     });
+    this.loader.present();
   }
 
   dismissLoadingView() {
     if (!this.loader) {
       return;
     }
-
     this.loader.dismiss();
   }
 }

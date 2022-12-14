@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Capacitor } from '@capacitor/core';
 import { RegisterService } from '../../services/register.service';
@@ -14,7 +14,6 @@ export class ScannerPage implements OnInit {
   isApp: boolean = false;
 
   constructor(
-    injector: Injector,
     private registerService: RegisterService,
     private router: Router
   ) {
@@ -39,6 +38,7 @@ export class ScannerPage implements OnInit {
     const result = await BarcodeScanner.startScan();
     this.showCamera = false;
     if (result.hasContent) {
+      BarcodeScanner.showBackground();
       this.registerService.confirmAssistance(result.content);
       console.log(result.content);
     }

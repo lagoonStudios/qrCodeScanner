@@ -64,19 +64,23 @@ ion-item {
 
 ion-content {
   &.background-image {
-    --background: url(./assets/img/background.svg) 0 0/100% 100% no-repeat;
+    // --background: url(./assets/img/background.svg) 0 0/100% 100% no-repeat;
+    --background-color: #FF4D73
   }
 
   &.background2-image {
-    --background: url(./assets/img/background2.svg) 0 0/100% 100% no-repeat;
+    // --background: url(./assets/img/background2.svg) 0 0/100% 100% no-repeat;
+    --background-color: #FF4D73
   }
 
   &.background-image-opac {
-    --background: linear-gradient(
-        rgba(255, 255, 255, 0.9),
-        rgba(255, 255, 255, 0.9)
-      ),
-      url(./assets/img/background.svg) no-repeat;
+    // --background: linear-gradient(
+    //     rgba(255, 255, 255, 0.9),
+    //     rgba(255, 255, 255, 0.9)
+    //   ),
+    //   url(./assets/img/background.svg) no-repeat;
+    --background-color: rgba(255, 77, 115, 0.5)
+    
   }
 }
 
