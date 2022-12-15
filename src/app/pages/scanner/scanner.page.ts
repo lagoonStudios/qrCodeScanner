@@ -40,7 +40,7 @@ export class ScannerPage implements OnInit {
     if (result.hasContent) {
       BarcodeScanner.showBackground();
       this.registerService.confirmAssistance(result.content);
-      console.log(result.content);
+      this.router.navigate(['/home']);
     }
   }
 
