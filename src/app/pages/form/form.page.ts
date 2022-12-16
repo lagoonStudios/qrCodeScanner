@@ -31,7 +31,7 @@ export class FormPage implements OnInit {
     this.form = this.formBuilder.group({
       CI: [
         '',
-        [Validators.required, Validators.min(0), Validators.minLength(6)],
+        [Validators.required, Validators.min(0)],
       ],
     });
   }

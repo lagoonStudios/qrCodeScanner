@@ -10,12 +10,13 @@
 
       <ion-row>
         <ion-col size="12">
-          <ion-label class="label-medium"> Cedula de Identidad </ion-label>
+          <ion-label class="label-medium"> Documento de Identidad </ion-label>
           <ion-item style="margin-top: 5px">
             <ion-input
               type="number"
               placeholder="Cedula de Identidad"
               formControlName="CI"
+              [step]="1"
               #inputCI
             ></ion-input>
             <ion-note slot="error" *ngIf="form.controls['CI'].touched"
