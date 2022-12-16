@@ -51,10 +51,33 @@ export class RegisterService {
   }
 
   async showAlert(msj: string, data: Register) {
-    const mesage = data != undefined ? `<p>Nombre: <b>${data.name}</b></p> <p>Documento de Identidad: <b>${data.id}</b></p>` : '';
+    console.log('data: ', data);
+    const icon =  data == undefined ? '../../assets/img/reject.png' : data.attendance == false ? '../../assets/img/checkmark.png' : '../../assets/img/reject.png'
+    const mesage = data !== undefined ? 
+      `<ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <img src="${icon}" class="img-100" />
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <p>Nombre: <b>${data.name}</b></p> <p>Documento de Identidad: <b>${data.id}</b></p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      `
+    : 
+    `<ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <img src="${icon}" class="img-100" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>`;
     const alert = await this.alertController.create({
       header: msj,
-      message: data != undefined ? mesage : '',
+      message: mesage,
       buttons: [
         {
           text: 'Ok',
