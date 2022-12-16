@@ -31,20 +31,12 @@ export class RegisterService {
         console.log(data);
         if (data) {
           if (data.attendance === false) {
-            const now = new Date().valueOf();
-            const eventDate = new Date('12/18/2022').valueOf();
-            if (now >= eventDate) {
               this.FireStore.doc('Registers/' + CI).update({
                 attendance: true,
               });
               this.dismissLoadingView();
               this.router.navigate(['/home']);
               this.showAlert('Registro exitoso', data);
-            } else {
-              this.dismissLoadingView();
-              this.router.navigate(['/home']);
-              this.showAlert('Registro exitoso (Solo pruebas)', data);
-            }
           } else {
             this.dismissLoadingView();
             this.router.navigate(['/home']);
