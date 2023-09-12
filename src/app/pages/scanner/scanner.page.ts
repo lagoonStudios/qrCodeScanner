@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./scanner.page.scss'],
 })
 export class ScannerPage implements OnInit {
-  showCamera: boolean = true;
-  isApp: boolean = false;
+  showCamera = true;
+  isApp = false;
 
   constructor(
     private registerService: RegisterService,

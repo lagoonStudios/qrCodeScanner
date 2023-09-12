@@ -8,42 +8,39 @@ import { RegisterService } from '../../services/register.service';
   styleUrls: ['./form.page.scss'],
 })
 export class FormPage implements OnInit {
+  form: FormGroup;
+  disableBtn = false;
+  userExists = false;
+
   constructor(
     private formBuilder: FormBuilder,
-    private registerServise: RegisterService,
+    private registerServise: RegisterService
   ) {}
-  form: FormGroup;
-  disableBtn: boolean = false;
-  userExists: boolean = false;
-  submitted: boolean = false;
-  @ViewChild('inputCI') input: HTMLIonInputElement;
 
   ngOnInit() {
     this.buildForm();
   }
 
-  ionViewDidEnter(){
-    console.log(this.input)
-    this.input.setFocus();
+  ionViewDidEnter() {
+    document.querySelector('ion-input').setFocus();
   }
 
   buildForm() {
     this.form = this.formBuilder.group({
-      CI: [
-        '',
-        [Validators.required, Validators.min(0)],
-      ],
+      ci: ['', [Validators.required, Validators.min(1000000)]],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
   submitForm() {
-    this.submitted = true;
-    if (this.form.valid) {
-      const cedula = this.form.controls['CI'].value;
-      this.registerServise.confirmAssistance(cedula);
-    } else {
-      console.log('Debes llenar los campos requeridos');
-    }
+    console.log('form: ', this.form);
+    // this.submitted = true;
+    // if (this.form.valid) {
+    //   const cedula = this.form.controls['ci'].value;
+    //   this.registerServise.confirmAssistance(cedula);
+    // } else {
+    //   console.log('Debes llenar los campos requeridos');
+    // }
   }
-
 }

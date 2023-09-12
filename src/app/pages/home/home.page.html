@@ -1,50 +1,48 @@
-<ion-content [fullscreen]="true" color="primary" scroll-y="false">
+<ion-content [fullscreen]="true" color="semiwhite" scroll-y="false">
   <ion-grid
-    style="width: 80%; position: absolute; top: 8%; left: 10%; right: 10%"
+    class="ion-margin"
   >
-    <ion-row>
+    <ion-row style="margin-top: 20%;">
       <ion-col size="12" class="ion-text-center">
-        <img
-          src="../../../assets/img/todosameridaText.svg"
-          alt="Todos a Mérida"
-        />
-      </ion-col>
-      <ion-col size="12" class="ion-text-center">
-        <img src="../../../assets/img/fechaText.svg" alt="Fecha y lugar" />
-      </ion-col>
-      <ion-col size="12" class="ion-text-center">
-        <img src="../../../assets/img/artistsLogo.svg" alt="Logo MicroTDH" />
+        <img src="../../../assets/img/logoEvento.svg" alt="Ticketscann" />
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row style="margin: 40px 0;">
       <ion-col size="12">
         <ion-button
           [routerLink]="['/scanner']"
-          fill="clear"
           expand="block"
           [disabled]="!isApp"
+          color="primary"
         >
           Escanear QR
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-button expand="block" fill="clear" [routerLink]="['/form']">
-          Validación
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="8">
+        <ion-button
+          expand="block"
+          [routerLink]="['/form']"
+          color="primary"
+        >
+          Registrar usuario
         </ion-button>
       </ion-col>
     </ion-row>
 
-    <ion-row class="ion-align-items-center infoText">
-      <ion-col class="ion-text-center" style="color: #ffffff">
-        <p>
+    <ion-row class="ion-align-items-center infoText ion-margin">
+      <ion-col size="12" class="ion-text-center">
+        <img src="../../../assets/img/logo.svg" style="width: 125px;" alt="Ticketscann" />
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-text color="dark">
           © Ticketscann todos los derechos
           <br />
           reservados 2022
           <br />
           Powered by Lagoon Studio
-        </p>
+        </ion-text>
       </ion-col>
     </ion-row>
   </ion-grid>
